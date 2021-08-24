@@ -1,0 +1,9 @@
+.body {
+    background-color: grey;
+    text-align: center;
+}
+
+h1, h2, h4, p {
+    color: honeydew;
+    margin-left: 10px;
+}

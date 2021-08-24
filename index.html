@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Centro Médico Ñuñoa</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+
+<body class="body">
+    <section class="container py-3">
+        <h1 id="titulo"></h1>
+        <br>
+        <div id="consultas"></div>
+    </section>
+
+    <section class="container py-3">
+        <h2 id=listado></h2}>
+        <h4 id=especialidades></h4>
+        <br>
+    </section>
+
+    <section class="container">
+        <div class="row justify-content-center">
+            <div id="containerTable1" class="col-md-10">
+
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row justify-content-center">
+            <div id="containerTable2" class="col-md-10">
+
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row justify-content-center">
+            <div id="containerTable3" class="col-md-10">
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById("titulo").innerHTML = "Estadisticas Centro Médico Ñuñoa" + "<br>";
+        
+        //Arreglo Traumatologia
+        var traumatologia = [
+            { hora: "08:00", especialista: "MARIA PAZ ALTUZARRA", paciente: "PAULA SANCHEZ", rut: "15554774-5", prevision: "FONASA" },
+            { hora: "10:00", especialista: "RAUL ARAYA", paciente: "ANGÉLICA NAVAS", rut: "15444147-9", prevision: "ISAPRE" },
+            { hora: "10:30", especialista: "MARIA ARRIAGADA", paciente: "ANA KLAPP", rut: "17879423-9", prevision: "ISAPRE" },
+            { hora: "11:00", especialista: "ALEJANDRO BADILLA", paciente: "FELIPE MARDONES", rut: "1547423-6", prevision: "ISAPRE" },
+            { hora: "11:30", especialista: "CECILIA BUDNIK", paciente: "DIEGO MARRE", rut: "16554741-K", prevision: "FONASA" },
+            { hora: "12:00", especialista: "ARTURO CAVAGNARO", paciente: "CECILIA MENDEZ", rut: "9747535-8", prevision: "ISAPRE" },
+            { hora: "12:30", especialista: "ANDRES KANACRI", paciente: "MARCIAL SUAZO", rut: "11254785-5", prevision: "ISAPRE" },
+        ]
+
+        //1. Agregar las siguientes horas al arreglo de Traumatología:
+        traumatologia.push({ hora: '09:00', especialista: 'RENÉ POBLETE', paciente: 'ANA GELONA', rut: '13123329-7', prevision: 'ISAPRE' },
+            { hora: '09:30', especialista: 'MARIA SOLAR', paciente: 'RAMIRO ANDRADE', rut: '12221451-K', prevision: 'FONASA' },
+            { hora: '10:00', especialista: 'RAUL LOYOLA', paciente: 'CARMEN ISLA', rut: '10112348-3', prevision: 'ISAPRE' },
+            { hora: '10:30', especialista: 'ANTONIO LARENAS', paciente: 'PABLO LOAYZA', rut: '13453234-1', prevision: 'ISAPRE' },
+            { hora: '12:00', especialista: 'MATIAS ARAVENA', paciente: 'SUSANA POBLETE', rut: '14345656-6', prevision: 'FONASA' });
+
+        //Ordenamos según la hora las nuevas consultas del arreglo de Traumatología
+        traumatologia.sort(function (a, b) {
+            if (a.hora > b.hora) {
+                return 1;
+            }
+            if (a.hora < b.hora) {
+                return -1;
+            }
+            // a must be equal to b
+            return 0;
+        });
+        
+        //Arreglo Radiologia
+        var radiologia = [
+            { hora: "11:00", especialista: "IGNACIO SCHULZ", paciente: "FRANCISCA ROJAS", rut: "9878782-1", prevision: "FONASA" },
+            { hora: "11:30", especialista: "FEDERICO SUBERCASEAUX", paciente: "PAMELA ESTRADA", rut: "15345241-3", prevision: "ISAPRE" },
+            { hora: "15:00", especialista: "FERNANDO WURTHZ", paciente: "ARMANDO LUNA", rut: "16445345-9", prevision: "ISAPRE" },
+            { hora: "15:30", especialista: "ANA MARIA GODOY", paciente: "MANUEL GODOY", rut: "17666419-0", prevision: "FONASA" },
+            { hora: "16:00", especialista: "PATRICIA SUAZO", paciente: "RAMON ULLOA", rut: "14989389-K", prevision: "FONASA" },
+        ]
+
+        //2. Eliminar el primer y último elemento del arreglo de Radiología
+        radiologia.shift();
+        radiologia.pop();
+
+        /*3. Imprimir en la página HTML, mediante document.write y / o laS funciones que estime
+        conveniente, la lista de consultas médicas de Dental.Sin embargo, debe hacerlo
+        separando por un guión cada dato desplegado y cada fila de información debe estar
+        separada por un párrafo*/
+
+        //Arreglo Dental
+        var dental = [
+            { hora: "08:30", especialista: "ANDREA ZUÑIGA", paciente: "MARCELA RETAMAL", rut: "11123425-6", prevision: "ISAPRE" },
+            { hora: "11:00", especialista: "MARIA PIA ZAÑARTU", paciente: "ANGEL MUÑOZ", rut: "9878789-2", prevision: "ISAPRE" },
+            { hora: "11:30", especialista: "SCARLETT WITTING", paciente: "MARIO KAST", rut: "7998789-5", prevision: "FONASA" },
+            { hora: "13:00", especialista: "FRANCISCO VON TEUBER", paciente: "KARIN FERNANDEZ", rut: "18887662-K", prevision: "FONASA" },
+            { hora: "13:30", especialista: "EDUARDO VIÑUELA", paciente: "HUGO SANCHEZ", rut: "17665461-4", prevision: "FONASA" },
+            { hora: "14:00", especialista: "RAQUEL VILLASECA", paciente: "ANA SEPULVEDA", rut: "14441281-0", prevision: "ISAPRE" },
+        ]
+
+        let consultas = document.getElementById("consultas");
+        consultas.innerHTML = ('<h4>Listado de Consultas Médicas de Dental:</h4>');
+        consultas.innerHTML += ('<br>');
+
+        dental.forEach(function (elemento, i) {
+            consultas.innerHTML += (`<p>Consulta: ${i + 1} - Hora: ${elemento.hora} - Especialista: ${elemento.especialista} 
+                - Paciente: ${elemento.paciente} - Rut: ${elemento.rut} - Prevision: ${elemento.prevision}</p>`);
+        });
+        consultas.innerHTML += ('<br>');
+
+        /*for (let i = 0; i < dental.length; i++) {
+            document.write(`<p>Consulta: ${i + 1} - Hora: ${dental[i].hora} - Especialista: ${dental[i].especialista} 
+                - Paciente: ${dental[i].paciente} - Rut: ${dental[i].rut} - Prevision: ${dental[i].prevision}</p>`);
+        }
+        document.write('<br>');*/
+
+        /*4. Imprimir un listado total de todos los pacientes que se atendieron en el centro
+        médico. Para esto, deberá unir todos los nombres de pacientes e imprimir uno por
+        cada párrafo*/
+
+        consultas.innerHTML += ('<h4>Listado Total de Pacientes del Centro Médico:</h4>');
+        consultas.innerHTML += ('<br>');
+        for (let i = 0; i < traumatologia.length; i++) {
+            consultas.innerHTML += (`<p>Paciente: ${traumatologia[i].paciente}</p>`);
+        }
+        for (let i = 0; i < radiologia.length; i++) {
+            consultas.innerHTML += (`<p>Paciente: ${radiologia[i].paciente}</p>`);
+        }
+        for (let i = 0; i < dental.length; i++) {
+            consultas.innerHTML += (`<p>Paciente: ${dental[i].paciente}</p>`);
+        }
+        consultas.innerHTML += ('<br>');
+
+        //5. Filtrar aquellos pacientes que indican ser de ISAPRE en la lista de consultas médicas de Dental.
+
+        consultas.innerHTML += ('<h4>Listado de Pacientes con ISAPRE de Consulta Médica de Dental:</h4>');
+        consultas.innerHTML += ('<br>');
+
+        let dentalIsapre = dental.filter(function (elemento) {
+            if (elemento.prevision == "ISAPRE") {
+                return elemento;
+            }
+        });
+
+        dentalIsapre.forEach(function (elemento) {
+            consultas.innerHTML += (`<p>Paciente: ${elemento.paciente} - Prevision: ${elemento.prevision}</p>`);
+        });
+        consultas.innerHTML += ('<br>');
+
+        /*for (let i = 0; i < dental.length; i++) {
+            if (dental[i].prevision == "ISAPRE") {
+                document.write(`<p>Paciente: ${dental[i].paciente} - Prevision: ${dental[i].prevision}</p>`);
+            }
+        }
+        document.write('<br>');*/
+
+        //6. Filtrar aquellos pacientes que indican ser de FONASA en la lista de consultas médicas de Traumatología.
+
+        consultas.innerHTML += ('<h4>Listado de Pacientes con FONASA de Consulta Médica de Traumatología:</h4>');
+        consultas.innerHTML += ('<br>');
+
+        let traumatologiaFonasa = traumatologia.filter(function (elemento) {
+            if (elemento.prevision == "FONASA") {
+                return elemento;
+            }
+        });
+
+        traumatologiaFonasa.forEach(function (elemento) {
+            consultas.innerHTML += (`<p>Paciente: ${elemento.paciente} - Prevision: ${elemento.prevision}</p>`);
+        });
+
+        //Recorrer el arreglo y mostrar su contenido en una tabla.
+
+        document.getElementById("listado").innerHTML = "Listado de Consultas Médicas" + "<br>";
+        document.getElementById("especialidades").innerHTML = "Radiología, Traumatología y Dental" + "<br>";
+
+        function printTable(id, listados) {
+            let containerTable = document.getElementById(id);
+            //crear la tabla
+            let table = createTable("table", 'table-dark');
+            let header = createHeader(getKeysArrayObject(listados));
+            let body = createBody(listados);
+            table.appendChild(header);
+            table.appendChild(body);
+            containerTable.appendChild(table);
+        }
+
+        function createTable(classTable, class2) {
+            let table = document.createElement('table');
+            table.classList.add(classTable);
+            table.classList.add(class2);
+            return table;
+        }
+
+        function createHeader(list) {
+            let tHead = document.createElement('thead');
+            let tr = document.createElement('tr');
+
+            for (element of list) {
+                let header = document.createElement('th');
+                header.setAttribute('scope', 'col');
+                header.textContent = element;
+                tr.appendChild(header);
+            }
+
+            tHead.appendChild(tr);
+
+            return tHead;
+        }
+
+        function createBody(listas) {
+            let tBody = document.createElement('tbody');
+
+            listas.forEach((lista, index) => {
+                let tr = document.createElement('tr');
+                let th = document.createElement('th');
+                th.setAttribute('scope', 'row');
+                th.textContent = index + 1;
+                tr.appendChild(th);
+
+                for (llave in lista) {
+                    let td = document.createElement('td');
+                    td.textContent = lista[llave];
+                    tr.appendChild(td);
+                }
+
+                tBody.appendChild(tr);
+
+            })
+
+            return tBody;
+        }
+
+        function getKeysArrayObject(arrObject) {
+            let arrayKeys = [];
+            arrayKeys.push("#");
+            for (my_object of arrObject) {
+                for (key in my_object) {
+                    arrayKeys.push(key)
+                }
+                break;
+            }
+
+            return arrayKeys
+        }
+
+        //Impresión de arreglos
+        printTable('containerTable1', radiologia);
+        printTable('containerTable2', traumatologia);
+        printTable('containerTable3', dental);
+
+    </script>
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
